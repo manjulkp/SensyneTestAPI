@@ -1,0 +1,48 @@
+package base;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
+import io.restassured.response.ResponseOptions;
+import utility.Common;
+import utility.ParseJson;
+import utility.RestAssuredHelper;
+
+public class StepBase {
+
+	public static ResponseOptions<Response> response;
+	public static InitializeWorldPay iWorldPay;
+	public static Map<String, String> map;
+	Common cm = new Common();
+
+	public void init() {
+		response = RestAssuredHelper.GetOps("/");
+		Response res = (Response) response.getBody();
+
+		Map<String, String> keyValueStore = new HashMap<>();
+		Stack<String> keyPath = new Stack();
+		JSONObject json = new JSONObject(cm.responseToString(res));
+		keyValueStore = ParseJson.getAllXpathAndValueFromJsonObject(json, keyValueStore, keyPath);
+
+		iWorldPay = new InitializeWorldPay();
+		iWorldPay.setPaymentsAuthorize(keyValueStore.get("_links.payments:authorize.href"));
+		iWorldPay.setServicePayments(keyValueStore.get("_links.service:payments"));
+		iWorldPay.setServiceVerificationsAccounts(keyValueStore.get("_links.service:verifications/accounts.href"));
+		iWorldPay.setServiceTokens(keyValueStore.get("_links.service:tokens.href"));
+		iWorldPay.setServiceVerifiedTokens(keyValueStore.get("_links.service:verifiedTokens.href"));
+		iWorldPay.setServiceVerificationsCustomer3ds(
+				keyValueStore.get("_links.service:verifications/customers/3ds.href"));
+
+	}
+
+
+
+}

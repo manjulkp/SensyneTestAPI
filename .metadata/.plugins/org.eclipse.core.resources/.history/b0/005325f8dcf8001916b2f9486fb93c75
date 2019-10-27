@@ -1,0 +1,10 @@
+
+@AllProduct
+Feature: List of Product
+ 
+
+  Scenario: Title of your scenario
+    Given I perform get operation "/products" to get the list of product
+    Then the product is "8" as the price as "9.98"
+
+  

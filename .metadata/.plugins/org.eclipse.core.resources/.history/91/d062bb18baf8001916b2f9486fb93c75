@@ -1,0 +1,112 @@
+package base;
+
+public class InitializeWorldPay {
+	
+	private String  paymentsAuthorize;
+	private String servicePayments;
+	private String  serviceTokens;
+	private String serviceVerificationsAccounts;
+	private String  serviceVerificationsCustomer3ds;
+	private String serviceVerifiedTokens;
+	@Override
+	public String toString() {
+		return "InitializeWorldPay [paymentsAuthorize=" + paymentsAuthorize + ", servicePayments=" + servicePayments
+				+ ", serviceTokens=" + serviceTokens + ", serviceVerificationsAccounts=" + serviceVerificationsAccounts
+				+ ", serviceVerificationsCustomer3ds=" + serviceVerificationsCustomer3ds + ", serviceVerifiedTokens="
+				+ serviceVerifiedTokens + "]";
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((paymentsAuthorize == null) ? 0 : paymentsAuthorize.hashCode());
+		result = prime * result + ((servicePayments == null) ? 0 : servicePayments.hashCode());
+		result = prime * result + ((serviceTokens == null) ? 0 : serviceTokens.hashCode());
+		result = prime * result
+				+ ((serviceVerificationsAccounts == null) ? 0 : serviceVerificationsAccounts.hashCode());
+		result = prime * result
+				+ ((serviceVerificationsCustomer3ds == null) ? 0 : serviceVerificationsCustomer3ds.hashCode());
+		result = prime * result + ((serviceVerifiedTokens == null) ? 0 : serviceVerifiedTokens.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		InitializeWorldPay other = (InitializeWorldPay) obj;
+		if (paymentsAuthorize == null) {
+			if (other.paymentsAuthorize != null)
+				return false;
+		} else if (!paymentsAuthorize.equals(other.paymentsAuthorize))
+			return false;
+		if (servicePayments == null) {
+			if (other.servicePayments != null)
+				return false;
+		} else if (!servicePayments.equals(other.servicePayments))
+			return false;
+		if (serviceTokens == null) {
+			if (other.serviceTokens != null)
+				return false;
+		} else if (!serviceTokens.equals(other.serviceTokens))
+			return false;
+		if (serviceVerificationsAccounts == null) {
+			if (other.serviceVerificationsAccounts != null)
+				return false;
+		} else if (!serviceVerificationsAccounts.equals(other.serviceVerificationsAccounts))
+			return false;
+		if (serviceVerificationsCustomer3ds == null) {
+			if (other.serviceVerificationsCustomer3ds != null)
+				return false;
+		} else if (!serviceVerificationsCustomer3ds.equals(other.serviceVerificationsCustomer3ds))
+			return false;
+		if (serviceVerifiedTokens == null) {
+			if (other.serviceVerifiedTokens != null)
+				return false;
+		} else if (!serviceVerifiedTokens.equals(other.serviceVerifiedTokens))
+			return false;
+		return true;
+	}
+	
+	public String getPaymentsAuthorize() {
+		return paymentsAuthorize;
+	}
+	public void setPaymentsAuthorize(String paymentsAuthorize) {
+		this.paymentsAuthorize = paymentsAuthorize;
+	}
+	public String getServicePayments() {
+		return servicePayments;
+	}
+	public void setServicePayments(String servicePayments) {
+		this.servicePayments = servicePayments;
+	}
+	public String getServiceTokens() {
+		return serviceTokens;
+	}
+	public void setServiceTokens(String serviceTokens) {
+		this.serviceTokens = serviceTokens;
+	}
+	public String getServiceVerificationsAccounts() {
+		return serviceVerificationsAccounts;
+	}
+	public void setServiceVerificationsAccounts(String serviceVerificationsAccounts) {
+		this.serviceVerificationsAccounts = serviceVerificationsAccounts;
+	}
+	public String getServiceVerificationsCustomer3ds() {
+		return serviceVerificationsCustomer3ds;
+	}
+	public void setServiceVerificationsCustomer3ds(String serviceVerificationsCustomer3ds) {
+		this.serviceVerificationsCustomer3ds = serviceVerificationsCustomer3ds;
+	}
+	public String getServiceVerifiedTokens() {
+		return serviceVerifiedTokens;
+	}
+	public void setServiceVerifiedTokens(String serviceVerifiedTokens) {
+		this.serviceVerifiedTokens = serviceVerifiedTokens;
+	}
+
+}
+

@@ -1,0 +1,53 @@
+package steps;
+
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseOptions;
+import pojos.JsonBody;
+import pojos.ProductList;
+import utility.Common;
+import utility.RestAssuredHelper;
+
+public class GetProductList  {
+
+	RestAssuredHelper restAssuredExtension = new RestAssuredHelper();	
+    ResponseOptions<Response> res;
+	Common commonUtility = new Common();
+	Map<String,String> uniquePath;
+	JsonBody json ;
+	
+	@Given("I perform get operation {string} to get the list of product")
+	public void i_perform_get_operation_to_get_the_list_of_product(String url_pattern) {
+		
+		res = (ResponseOptions<Response>) restAssuredExtension.GetOps(url_pattern).getBody();
+		//String s = res.toString();
+		
+        
+       
+       //System.out.println("jsonArray-->"+s);
+		//System.out.println(jsonArray.get(0));
+	}
+
+	@Then("the product is {string} as the price as {string}")
+	public void the_product_is_as_the_price_as(String id, String price) {
+//		JsonPath path =  res.getBody().jsonPath();
+//	
+//		System.out.println("manjula  ------ "+path.getJsonObject("[0].name"));
+		
+		res.getBody().jsonPath().get("[0].name").equals(price);
+	  
+	}
+	
+}
+

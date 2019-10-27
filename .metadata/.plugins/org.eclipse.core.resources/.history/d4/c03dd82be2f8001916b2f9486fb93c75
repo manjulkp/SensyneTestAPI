@@ -1,0 +1,12 @@
+@AllProduct
+Feature: List of Product
+
+  Scenario: Get list of products
+    Given I perform get operation "/products" to get the list of product
+    Then the product in 1 as the price as "9.25"
+
+  Scenario: create a products
+    Given I perform post operation "/products" to get the list of product
+      | Name          | Price |
+      | Happy Testing |  80.9 |
+    Then the product is added

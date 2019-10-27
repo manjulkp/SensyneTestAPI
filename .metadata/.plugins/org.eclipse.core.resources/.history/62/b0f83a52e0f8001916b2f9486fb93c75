@@ -1,0 +1,67 @@
+package steps;
+
+import java.util.List;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.testng.Assert;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseOptions;
+import pojos.JsonBody;
+import pojos.ProductList;
+import utility.Common;
+import utility.RestAssuredHelper;
+
+public class GetProductList  {
+
+	RestAssuredHelper restAssuredExtension = new RestAssuredHelper();	
+    ResponseOptions<Response> res;
+	Common commonUtility = new Common();
+	Map<String,String> uniquePath;
+	JsonBody json ;
+	
+	@Given("I perform get operation {string} to get the list of product")
+	public void i_perform_get_operation_to_get_the_list_of_product(String url_pattern) {
+		
+		res = (ResponseOptions<Response>) restAssuredExtension.GetOps(url_pattern).getBody();
+		
+	}
+
+	@Then("the product in {int} as the price as {string}")
+	public void the_product_is_as_the_price_as(int id, String price) {
+		
+		Assert.assertTrue(res.getBody().jsonPath().get("[0].id").equals(id));
+		Assert.assertTrue(res.getBody().jsonPath().get("[0].price").equals(price));
+	  
+	}
+	
+	@Given("I perform post operation {string} to get the list of product")
+	public void i_perform_post_operation_to_get_the_list_of_product(String url, io.cucumber.datatable.DataTable dataTable) {
+		List<Map<String, String>> list = dataTable.asMaps(String.class, String.class);
+	    System.out.println(list.get(0).get("Name"));
+	    
+	    JsonBody body = new JsonBody();
+		body.setName(dataTable.);
+		
+		res = (ResponseOptions<Response>) restAssuredExtension.PostOpsWithBody(url, body);
+		
+		
+	}
+
+	@Then("the product is added")
+	public void the_product_is_added() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
+	}
+	
+}
+

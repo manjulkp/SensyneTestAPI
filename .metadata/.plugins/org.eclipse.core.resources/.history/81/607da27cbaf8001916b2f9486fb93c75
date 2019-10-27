@@ -1,0 +1,79 @@
+package steps;
+
+import java.util.Map;
+
+import base.StepBase;
+import io.cucumber.java.en.Given;
+import io.restassured.RestAssured;
+import io.restassured.authentication.PreemptiveBasicAuthScheme;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseOptions;
+import io.restassured.specification.RequestSpecification;
+import pojos.AuthorizePaymentBody;
+import pojos.CardExpiryDate;
+import pojos.Create_Token_Body;
+import pojos.Instruction;
+import pojos.Merchant;
+import pojos.Narrative;
+import pojos.PaymentInstrument;
+import pojos.Value;
+import utility.Common;
+import utility.Configuration;
+import utility.RestAssuredHelper;
+
+public class Payment_Steps extends StepBase {
+	
+	public static ResponseOptions<Response> res;
+	Common commonUtility = new Common();
+	
+	
+	
+	@Given("I perform POST operation for authorize payment")
+	public void i_perform_POST_operation_for_authorize_payment() {
+		
+
+//		System.out.println(new Common().stringToMap(Configuration.getConfigurationValue("paymentHeader")));
+//		
+//		res = RestAssuredHelper.PostOpsWithJsonBodyAndHeader(iWorldPay.getPaymentsAuthorize(), body, new Common().stringToMap(Configuration.getConfigurationValue("paymentHeader")));
+//		
+		utility.Configuration.getConfiguration();
+    	PreemptiveBasicAuthScheme auth = new PreemptiveBasicAuthScheme();
+        RequestSpecBuilder builder = new RequestSpecBuilder();
+        
+        builder.setBaseUri( "https://try.access.worldpay.com/payments/authorizations");
+       
+        builder.addHeaders(new Common().stringToMap(Configuration.getConfigurationValue("paymentHeader")));
+        auth.setUserName(Configuration.getConfigurationValue("username"));
+        auth.setPassword(Configuration.getConfigurationValue("password"));
+        builder.setAuth(auth);
+       
+        RequestSpecification Request = RestAssured.given().spec(builder.build());
+        Request.body(user);
+        ResponseOptions<Response> res = Request.post("https://try.access.worldpay.com/payments/authorizations");
+        
+        
+        Response res1 = (Response) res.getBody();
+		   String s = commonUtility.responseToString(res1);
+		   
+		   
+        System.out.println("manjula "+s);
+		
+		
+	}
+
+	@Given("the currency is {string}")
+	public void the_currency_is(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
+	}
+
+	@Given("the amount is {string}")
+	public void the_amount_is(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
+	}
+
+
+}

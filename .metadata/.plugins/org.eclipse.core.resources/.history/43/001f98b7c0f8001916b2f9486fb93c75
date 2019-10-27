@@ -1,0 +1,19 @@
+package steps;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+
+public class GetProductList {
+
+	@Given("I perform get operation {string} to get the list of product")
+	public void i_perform_get_operation_to_get_the_list_of_product(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
+	}
+
+	@Then("the product is {string} as the price as {string}")
+	public void the_product_is_as_the_price_as(String string, String string2) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
+	}
+

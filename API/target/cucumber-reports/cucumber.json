@@ -1,0 +1,78 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "start_timestamp": "2019-10-27T18:17:55.173Z",
+        "line": 4,
+        "name": "Get list of products",
+        "description": "",
+        "id": "list-of-product;get-list-of-products",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1711250938,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "I perform get operation \"/products\" to get the list of product",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/products\"",
+                  "offset": 24
+                }
+              ],
+              "location": "GetProductList.i_perform_get_operation_to_get_the_list_of_product(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 509789330,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "the product in 1 as the price as \"9.25\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 15
+                },
+                {
+                  "val": "\"9.25\"",
+                  "offset": 33
+                }
+              ],
+              "location": "GetProductList.the_product_is_as_the_price_as(int,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@AllProduct"
+          }
+        ]
+      }
+    ],
+    "name": "List of Product",
+    "description": "",
+    "id": "list-of-product",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/feature/GetProductList.feature",
+    "tags": [
+      {
+        "name": "@AllProduct",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
